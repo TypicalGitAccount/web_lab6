@@ -20,9 +20,10 @@
 <body>
 
 <header>
-    <div class="container" style="margin-bottom: 5px;">
-        <div class="lineHeader">
+    <div class="container">
+        <div class="header">
             <div class="higherHeader">
+
                 @if(!Auth::guest())
                     <a href="/logout" style="float: right;
                                 text-decoration: none;
@@ -30,7 +31,7 @@
                                 margin-top: 12px;
                                 margin-right: 3%;
                                 color: #fff;
-                                font-size: 15px;">Logout</a>
+                                font-size: 15px;">Вийти</a>
                 @else
                     <a href="/login" style="float: right;
                                 text-decoration: none;
@@ -38,28 +39,29 @@
                                 margin-top: 12px;
                                 margin-right: 3%;
                                 color: #fff;
-                                font-size: 15px;">Log in</a>
+                                font-size: 15px;">Увійти</a>
                     <a href="/registration" style="float: right;
                                 text-decoration: none;
                                 position: relative;
                                 margin-top: 12px;
                                 margin-right: 3%;
                                 color: #fff;
-                                font-size: 15px;">Register</a>
+                                font-size: 15px;">Зареєструватися</a>
                 @endif
-                <a href="{{url('/aboutUs')}}" class="languageHeader"><span class="textLanguageHeader">Language</span><img src="/img/UK_flag.png" alt="flag" class="flag"></a>
+
+                <a href="/en" class="languageHeader"><span class="textLanguageHeader">Мова</span><img src="/img/Language_flag.svg" alt="flag" class="flag"></a>
             </div>
             <div class="lowHeader">
                 <img src="/img/Logo.png" alt="logo" class="logoImg">
-                <button class="btnLowHeader firstBtn" onclick="window.location='{{url('/en')}}'">Home</button>
-                <button class="btnLowHeader" onclick="window.location='{{url('services/en')}}'">Services</button>
-                <button class="btnLowHeader lastBtn" onclick="window.location='{{url('/aboutUs/en')}}'">About us</button>
+                <button class="btnLowHeader firstBtn" onclick="window.location='{{url('/')}}'">Головна</button>
+                <button class="btnLowHeader" onclick="window.location='{{url('/services')}}'">Послуги</button>
+                <button class="btnLowHeader lastBtn" onclick="window.location='{{url('/aboutUs')}}'">Про нас</button>
             </div>
         </div>
     </div>
 </header>
 
-<div class="media" style="margin-top: 100px;">
+<div class="media" style="margin-top: 200px;">
     <a href="https://www.youtube.com/"><img src="/img/youtubeImg.png" alt="youtube" class="mediaImg"></a> <br>
     <a href="https://instagram.com/"><img src="/img/instagramImg.jpg" alt="inst" class="mediaImg"></a> <br>
     <a href="https://web.telegram.org/"><img src="/img/telegramIng.png" alt="tel" class="mediaImg"></a> <br>

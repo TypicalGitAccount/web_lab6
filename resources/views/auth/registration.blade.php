@@ -1,7 +1,7 @@
 @extends('auth.layout')
 
 @section('content')
-    <main class="login-form" style="margin-top:50px;">
+    <main class="login-form" style="margin-top:200px;">
         <div class="cotainer">
             <div class="row justify-content-center">
                 <div class="col-md-8">

@@ -1,7 +1,7 @@
 @extends('auth.layout')
 
 @section('content')
-    <main class="login-form" style="margin-top:50px;">
+    <main class="login-form" style="margin-top:200px;">
         <div class="cotainer">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -11,8 +11,7 @@
                             <form action="{{ route('login.post') }}" method="POST">
                                 @csrf
                                 <div class="form-group row">
-                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail
-                                        Address</label>
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">Електронна пошта</label>
                                     <div class="col-md-6">
                                         <input type="text" id="email_address" class="form-control" name="email" required
                                                autofocus>
@@ -23,7 +22,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Пароль</label>
                                     <div class="col-md-6">
                                         <input type="password" id="password" class="form-control" name="password"
                                                required>
@@ -37,7 +36,7 @@
                                     <div class="col-md-6 offset-md-4">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="remember"> Remember Me
+                                                <input type="checkbox" name="remember"> Запам'ятати мене
                                             </label>
                                         </div>
                                     </div>
