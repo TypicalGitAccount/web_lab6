@@ -83,7 +83,7 @@ a {text-decoration: none;}
     font-size: 27px;
     line-height: 30px;
     text-align: center;
-    color: #0C0C0C; 
+    color: #0C0C0C;
     background-color: transparent;
     border: 1px #645E5E;
     box-shadow: 1px 1px 6px 1px rgb(0 0 0 / 25%);
@@ -320,6 +320,10 @@ footer {margin: 0;}
     .titleFooter {
         top: -62px;
     }
+
+    .media {
+        display: none;
+    }
 }
 
 @media (max-width: 920px) {
@@ -357,7 +361,7 @@ footer {margin: 0;}
     }
     .textMain {
         margin-top: 20%;
-    } 
+    }
 }
 
 @media (max-width: 768px) {
