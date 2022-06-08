@@ -39,36 +39,6 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="container">
-            <div class="higherFotter">
-                <h1 class="titleFooter">Ready to join?</h1>
-                <hr class="lineBellowTitleFotter">
-                <div class="footerAllItems">
-                    <div class="footerItems">
-                        <img src="{{asset("img/location.svg")}}" class="footerImg">
-                        <p class="footerText">Are waiting for you<br>
-                            Kyiv, street, №26</p>
-                    </div>
-                    <div class="footerItems">
-                        <img src="{{asset("img/time.svg")}}" class="footerImg">
-                        <p class="footerText">We work from  <br>
-                            8 am to 8 pm</p>
-                    </div>
-                    <div class="footerItems">
-                        <img src="{{asset("img/mail.svg")}}" class="footerImg">
-                        <p class="footerText">Email<br>
-                            example@gmail.com</p>
-                    </div>
-                    <div class="footerItems">
-                        <img src="{{asset("img/phone.svg")}}" class="footerImg">
-                        <p class="footerText">Call<br>
-                            +380-67-111-11-11</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
     @endsection
 </html>

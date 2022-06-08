@@ -70,6 +70,8 @@ class AuthController extends Controller
         $check = $this->create($data);
 
         $this->postLogin($request, $lang);
+
+        return redirect("/" . $lang);
     }
 
     public function create(array $data)
