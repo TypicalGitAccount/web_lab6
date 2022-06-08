@@ -13,9 +13,9 @@ Route::get('/email/{lang?}', [HomeController::class, 'email']);
 Route::post('/email/{lang?}', [HomeController::class, 'emailConfirmed']);
 Route::get('/comments/{lang?}', [HomeController::class, 'comments']);
 
-Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
-Route::get('registration', [AuthController::class, 'registration'])->name('register');
-Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
-Route::get('dashboard', [AuthController::class, 'dashboard']);
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('login/{lang?}', [AuthController::class, 'index'])->name('login');
+Route::get('wrongCredentials/{lang?}', [AuthController::class, 'wrongCredentials']);
+Route::post('post-login/{lang?}', [AuthController::class, 'postLogin'])->name('login.post');
+Route::get('registration/{lang?}', [AuthController::class, 'registration'])->name('register');
+Route::post('post-registration/{lang?}', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::get('logout/{lang?}', [AuthController::class, 'logout'])->name('logout');

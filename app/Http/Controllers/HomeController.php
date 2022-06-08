@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Email;
 use App\Models\Service;
 use App\Models\User;
-use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\Console\Input\Input;
-use function Sodium\add;
 
 class HomeController extends Controller
 {
@@ -42,18 +40,22 @@ class HomeController extends Controller
     }
 
     public function postOrderService(Request $request, $lang=null) {
-        $new_order = array('user_id' =>$request->input('user_id'), 'service_id' => $request->input('service_id'));
+        $new_order = array('user_id' =>$request->input('user_id'),
+            'service_id' => $request->input('service_id'));
         DB::table('orders')->insert($new_order);
         return redirect('/services');
     }
 
     public function email($lang=null) {
-        if (Auth::guest())
-            return redirect('login');
+        $isGuest = Auth::guest();
 
         if ($lang == 'en') {
+            if ($isGuest)
+                return redirect('login/en');
             return view('emailUsEng', ['email' => new Email()]);
         }
+        if ($isGuest)
+            return redirect('login');
         return view('emailUs', ['email' => new Email()]);
     }
 
@@ -69,10 +71,25 @@ class HomeController extends Controller
         return view('emailed', ['name' => $name]);
     }
 
-    public function comments($lang=null) {
-        if ($lang=='en') {
-            return view('commentsEn');
+    private function fetch_comments(&$array, $delimiter) {
+        foreach (Comment::all() as $comment) {
+            $array[] = User::find((int)$comment->getAttribute('user_id'))->name
+                . $delimiter . $comment->getAttribute('text');
         }
-        return view('comments');
+    }
+
+    public function comments($lang=null) {
+        $delimiter = "";
+        $comments = array();
+        if ($lang=='en') {
+            $delimiter .= " says : ";
+            $this->fetch_comments($comments, $delimiter);
+
+            return view('commentsEn', ['comments' => $comments] );
+        }
+        $delimiter .= " коментує : ";
+        $this->fetch_comments($comments, $delimiter);
+
+        return view('comments', ['comments' => $comments] );
     }
 }

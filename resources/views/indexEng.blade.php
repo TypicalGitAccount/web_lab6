@@ -1,57 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href={{asset("css/style.css")}}>
+@extends('layoutEn')
 
-    <title>My Time</title>
-    <link rel="icon" type="image/x-icon" href="{{asset("img/favicon.png")}}">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header">
-                <div class="higherHeader">
-                    @if(!Auth::guest())
-                        <a href="/logout" style="float: right;
-                                text-decoration: none;
-                                position: relative;
-                                margin-top: 12px;
-                                margin-right: 3%;
-                                color: #fff;
-                                font-size: 15px;">Logout</a>
-                    @else
-                        <a href="/login" style="float: right;
-                                text-decoration: none;
-                                position: relative;
-                                margin-top: 12px;
-                                margin-right: 3%;
-                                color: #fff;
-                                font-size: 15px;">Log in</a>
-                        <a href="/registration" style="float: right;
-                                text-decoration: none;
-                                position: relative;
-                                margin-top: 12px;
-                                margin-right: 3%;
-                                color: #fff;
-                                font-size: 15px;">Register</a>
-                    @endif
-                    <a href="{{url('/')}}" class="languageHeader"><span class="textLanguageHeader">Language</span><img src="{{asset("img/UK_flag.png")}}" alt="flag" class="flag"></a>
-                </div>
-                <div class="lowHeader">
-                    <img src="/img/Logo.png" alt="logo" class="logoImg">
-                    <button class="btnLowHeader firstBtn" onclick="window.location='{{url('/en')}}'">Main Page</button>
-                    <button class="btnLowHeader" onclick="window.location='{{url('/services/en')}}'">Services</button>
-                    <button class="btnLowHeader lastBtn" onclick="window.location='{{url('/aboutUs/en')}}'">About Us</button>
-                </div>
-            </div>
-        </div>
-    </header>
+@section('content')
+
     <div class="media">
         <a href="https://www.youtube.com/"><img src="{{asset("img/youtubeImg.png")}}" alt="youtube" class="mediaImg"></a> <br>
         <a href="https://instagram.com/"><img src="{{asset("img/instagramImg.jpg")}}" alt="inst" class="mediaImg"></a> <br>
@@ -120,4 +70,5 @@
         </div>
     </footer>
 </body>
+    @endsection
 </html>

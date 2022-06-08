@@ -4,23 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function index($lang=null)
     {
+        if ($lang=='en')
+            return view('auth.loginEn');
+
         return view('auth.login');
     }
 
-    public function registration()
+    public function registration($lang=null)
     {
+        if ($lang=='en')
+            return view('auth.registrationEn');
+
         return view('auth.registration');
     }
 
-    public function postLogin(Request $request)
+    public function postLogin(Request $request, $lang=null)
     {
         $request->validate([
             'email' => 'required',
@@ -28,15 +35,30 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
+        if ($lang=='en') {
+            if (Auth::attempt($credentials)) {
+                return redirect('/en');
+            }
+
+            return redirect("wrongCredentials/en")->withSuccess('Opps! You have entered invalid credentials');
+        }
+
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/')
                 ->withSuccess('You have Successfully loggedin');
         }
 
-        return redirect("/")->withSuccess('Oppes! You have entered invalid credentials');
+        return redirect("/wrongCredentials");
     }
 
-    public function postRegistration(Request $request)
+    public function wrongCredentials($lang=null) {
+        if ($lang=='en')
+            return view('auth.wrongCredentialsEn');
+
+        return view('auth.wrongCredentials');
+    }
+
+    public function postRegistration(Request $request, $lang=null)
     {
         $request->validate([
             'name' => 'required',
@@ -47,16 +69,7 @@ class AuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
-    }
-
-    public function dashboard()
-    {
-        if(Auth::check()){
-            return view('dashboard');
-        }
-
-        return redirect("login")->withSuccess('Opps! You do not have access');
+        $this->postLogin($request, $lang);
     }
 
     public function create(array $data)
@@ -68,10 +81,11 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout() {
+    public function logout($lang=null) {
         Session::flush();
         Auth::logout();
-
+        if ($lang == 'en')
+            return Redirect('/en');
         return Redirect('/');
     }
 }
